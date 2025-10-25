@@ -1,0 +1,90 @@
+1. Siapkan Termux
+
+Pastikan kamu pakai versi terbaru dari F-Droid (bukan Play Store).
+👉 https://f-droid.org/en/packages/com.termux/
+
+2. Update & Install Tools Dasar
+
+Jalankan di Termux:
+
+pkg update && pkg upgrade -y
+pkg install python git nodejs curl -y
+
+
+Cek versi:
+
+python --version
+node -v
+npm -v
+
+3. Clone atau Copy Project
+
+Kalau kamu punya di GitHub:
+
+git clone https://github.com/namarepo/sukistore.git
+
+
+Kalau tidak, kamu bisa buat folder manual:
+
+mkdir sukistore
+cd sukistore
+mkdir backend frontend
+
+
+Lalu tempelkan file backend dan frontend yang sudah saya kasih tadi.
+
+4. Jalankan Backend
+
+Masuk ke folder backend:
+
+cd sukistore/backend
+pip install -r requirements.txt
+python db_init.py
+python app.py
+
+
+Kalau berhasil, muncul:
+
+ * Running on http://127.0.0.1:5000
+
+
+Biarkan Termux tetap terbuka.
+
+5. Tes API
+
+Buka tab baru di Termux:
+
+curl -X POST http://127.0.0.1:5000/api/register \
+ -H "Content-Type: application/json" \
+ -d '{"username":"u","password":"p"}'
+
+
+Kalau sukses, muncul token JSON.
+
+6. Frontend (React)
+
+React agak berat di Termux, tapi bisa dijalankan dengan Node.js:
+
+cd sukistore/frontend
+npm install
+npm start
+
+
+Lalu buka browser HP:
+
+http://localhost:3000
+
+
+Jika tidak bisa langsung dibuka, cari IP lokal Termux dengan:
+
+ifconfig
+
+
+Gunakan alamat IP yang tampil, misalnya http://192.168.1.5:3000.
+
+7. Alternatif Ringan (Tanpa React)
+
+Kalau HP kamu terbatas, kamu bisa pakai Flask saja (tanpa frontend).
+Akses lewat browser:
+
+http://127.0.0.1:5000/api/products
