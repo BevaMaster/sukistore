@@ -1,0 +1,10 @@
+{
+  "name": "sukistore-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "18.x",
+    "react-dom": "18.x",
+    "react-scripts": "5.x"
+  }
+}
